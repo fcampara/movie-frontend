@@ -9,5 +9,9 @@ export default {
   loadingUserInformation: 'Loading user information',
   fieldIsRequired: 'Field is required',
   invalidEmail: 'Invalid Email',
-  search: 'Search'
+  search: 'Search',
+  createAccount: 'Create Account',
+  confirmPassword: 'Confirm Password',
+  birthDay: 'Birth day',
+  successCreateUser: 'Success in create User'
 }

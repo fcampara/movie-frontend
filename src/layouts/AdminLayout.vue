@@ -46,7 +46,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      logout: 'Auth/logout'
+      logout: 'auth/logout'
     }),
     handleLogout () {
       this.logout()

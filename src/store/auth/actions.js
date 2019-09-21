@@ -1,10 +1,9 @@
-import { i18n } from '../../boot/i18n'
 import { axios } from '../../boot/axios'
-import { Loading } from 'quasar'
+import { i18n } from '../../boot/i18n'
+import { notify } from '../../utils/notify'
 
 export function loginWithMailPassword ({ commit }, payload) {
   return new Promise((resolve, reject) => {
-    Loading.show(i18n.t('loadingUserInformation'))
     axios.post('/sessions', payload).then(({ data }) => {
       if (data) {
         commit('setAuth', data)
@@ -13,12 +12,22 @@ export function loginWithMailPassword ({ commit }, payload) {
       return reject()
     }).catch(() => {
       return reject()
-    }).finally(() => {
-      Loading.hide()
     })
   })
 }
 
 export function logout ({ commit }) {
   commit('logout', null)
+}
+
+export function createAccount (_, payload) {
+  console.log(payload)
+  return new Promise((resolve, reject) => {
+    axios.post('/users', payload).then(({ data }) => {
+      notify(i18n.t('successCreateUser'))
+      return resolve(data)
+    }).catch((err) => {
+      return reject(err)
+    })
+  })
 }

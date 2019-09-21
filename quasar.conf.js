@@ -11,7 +11,10 @@ module.exports = function (ctx) {
       'i18n',
       'auth',
       'authGuard',
-      'axios'
+      'axios',
+      'format',
+      'notify',
+      'customComponents'
     ],
 
     css: [
@@ -35,7 +38,7 @@ module.exports = function (ctx) {
 
     framework: {
       // iconSet: 'ionicons-v4', // Quasar icon set
-      // lang: 'de', // Quasar language pack
+      // lang: 'pt-br', // Quasar language pack
 
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives

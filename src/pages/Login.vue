@@ -4,7 +4,7 @@
       <q-avatar class="col-12 q-mt-xl" icon="fas fa-film" size="10rem"/>
       <span class="text-overline">Smart Movies</span>
     </div>
-    <div class="column q-px-xl q-mt-xl q-gutter-md">
+    <div class="column q-px-xl q-mt-xl">
       <q-input
         v-model="email"
         :label="$t('email')"
@@ -20,7 +20,24 @@
         :label="$t('password')"
         :rules="_getRules()._isRequired"
       />
-      <q-btn class="bg-primary text-secondary" :loading="loading" :label="$t('logIn')" @click="handleLogin"/>
+
+      <div class="row col-12">
+        <div class="col-md-6 col-12">
+          <q-btn
+            class="bg-primary text-secondary full-width"
+            :loading="loading"
+            :label="$t('logIn')"
+            @click="handleLogin"
+          />
+        </div>
+        <div class="col-md-6 col-12">
+          <q-btn
+            class="bg-secondary text-primary full-width"
+            :label="$t('createAccount')"
+            @click="() => $router.push('create')"
+          />
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
@@ -37,7 +54,7 @@ export default {
   }),
   methods: {
     ...mapActions({
-      authLogin: 'Auth/loginWithMailPassword'
+      authLogin: 'auth/loginWithMailPassword'
     }),
     handleLogin () {
       if (!this._isValidForm(this.$refs)) return false

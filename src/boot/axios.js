@@ -24,7 +24,7 @@ instance.interceptors.response.use((response) => {
     })
   }
 
-  return Promise.reject(error)
+  return Promise.reject(error.response.data)
 })
 
 export default async ({ Vue }) => {

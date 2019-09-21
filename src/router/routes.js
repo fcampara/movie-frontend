@@ -10,14 +10,15 @@ const routes = [
   },
   {
     path: '/auth',
+    meta: { authRequired: false },
     component: () => import('layouts/AuthLayout.vue'),
     children: [
       { path: '', name: 'login', component: () => import('pages/Login.vue') },
-      { path: '/auth/create', component: () => import('pages/Create.vue') }
+      { path: '/auth/create', component: () => import('pages/CreateAccount.vue') }
     ]
   }
 ]
 
-routes.push({ path: '*', component: () => import('pages/Error404.vue') })
+// routes.push({ path: '*', component: () => import('pages/Error404.vue') })
 
 export default routes

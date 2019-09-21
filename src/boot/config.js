@@ -6,7 +6,7 @@ export default async ({ Vue }) => {
         input: {
           outlined: true,
           dense: true,
-          class: 'q-pa-xs q-mb-xs primary'
+          class: 'q-pa-xs q-mb-md primary'
         }
       })
     }

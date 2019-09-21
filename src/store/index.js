@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-import Auth from './auth'
+import auth from './auth'
+import profile from './profile'
 
 Vue.use(Vuex)
 
 export default function (/* { ssrContext } */) {
   const Store = new Vuex.Store({
     modules: {
-      Auth
+      auth,
+      profile
     },
     strict: process.env.DEV
   })
