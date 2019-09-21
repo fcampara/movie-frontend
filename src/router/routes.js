@@ -5,14 +5,14 @@ const routes = [
     component: () => import('layouts/AdminLayout.vue'),
     meta: { authRequired: true },
     children: [
-      { path: '', component: () => import('pages/Index.vue') }
+      { path: '', name: 'index', component: () => import('pages/Index.vue') }
     ]
   },
   {
     path: '/auth',
     component: () => import('layouts/AuthLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/Login.vue') },
+      { path: '', name: 'login', component: () => import('pages/Login.vue') },
       { path: '/auth/create', component: () => import('pages/Create.vue') }
     ]
   }

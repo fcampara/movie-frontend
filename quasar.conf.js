@@ -6,12 +6,12 @@ module.exports = function (ctx) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     boot: [
+      'config',
       'validations',
       'i18n',
       'auth',
       'authGuard',
-      'axios',
-      'config'
+      'axios'
     ],
 
     css: [
