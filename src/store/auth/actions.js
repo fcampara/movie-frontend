@@ -21,7 +21,6 @@ export function logout ({ commit }) {
 }
 
 export function createAccount (_, payload) {
-  console.log(payload)
   return new Promise((resolve, reject) => {
     axios.post('/users', payload).then(({ data }) => {
       notify(i18n.t('successCreateUser'))

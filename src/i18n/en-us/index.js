@@ -13,5 +13,9 @@ export default {
   createAccount: 'Create Account',
   confirmPassword: 'Confirm Password',
   birthDay: 'Birth day',
-  successCreateUser: 'Success in create User'
+  successCreateUser: 'Success in create User',
+  creteNewProfile: 'Create new profile',
+  save: 'Save',
+  name: 'Name',
+  cancel: 'Cancel'
 }

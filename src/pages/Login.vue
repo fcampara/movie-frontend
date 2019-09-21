@@ -46,7 +46,7 @@
 import { extend } from 'quasar'
 import { mapActions } from 'vuex'
 export default {
-  name: 'PageIndex',
+  name: 'PageLogin',
   data: () => ({
     email: '',
     password: '',

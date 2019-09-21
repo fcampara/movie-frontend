@@ -19,6 +19,7 @@ module.exports = function (ctx) {
 
     css: [
       'auth.sass',
+      'profile.sass',
       'layout.sass',
       'app.sass'
     ],

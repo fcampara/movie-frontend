@@ -1,9 +1,7 @@
 
 export default async ({ router, store }) => {
-  router.beforeEach((to, from, next) => {
+  router.beforeEach((to, _, next) => {
     const { user, token } = store.state.auth
-    const { name, id } = store.state.profile
-    console.log(name, id)
     const authRequired = to.matched.some(route => route.meta.authRequired)
     if (authRequired) {
       if (user && token) {

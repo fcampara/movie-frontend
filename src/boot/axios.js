@@ -1,12 +1,20 @@
 import Axios from 'axios'
 import { Notify } from 'quasar'
-
+import store from '../store'
 const baseURL = process.env.n.BASE_URL
 const instance = Axios.create({
   baseURL,
   headers: {
     'Content-Type': 'application/json'
   }
+})
+
+instance.interceptors.request.use((config) => {
+  const token = store().state.auth.token
+  config.headers.Authorization = `Bearer ${token}`
+  return config
+}, (error) => {
+  return Promise.reject(error)
 })
 
 instance.interceptors.response.use((response) => {

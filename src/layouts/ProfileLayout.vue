@@ -1,20 +1,22 @@
 <template>
   <q-layout view="lHr lpR lFr">
-
-    <q-page-container class="row justify-center items-center">
-      <q-card class="workspace--login shadow-11">
-        <router-view />
-      </q-card>
+    <q-page-container class="row justify-center items-center col-12">
+      <router-view />
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
-  data () {
-    return {
-    }
+  beforeMount () {
+    this.getProfile()
+  },
+  methods: {
+    ...mapActions({
+      getProfile: 'profile/getProfile'
+    })
   }
 }
 </script>

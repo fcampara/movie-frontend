@@ -12,7 +12,7 @@ export default function (/* { ssrContext } */) {
       auth,
       profile
     },
-    strict: process.env.DEV
+    strict: false
   })
 
   return Store

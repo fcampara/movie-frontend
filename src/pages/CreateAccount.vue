@@ -53,7 +53,7 @@
 import { extend } from 'quasar'
 import { mapActions } from 'vuex'
 export default {
-  name: 'PageIndex',
+  name: 'PageCreateAccount',
   data: () => ({
     form: {
       name: '',

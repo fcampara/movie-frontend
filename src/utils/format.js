@@ -5,7 +5,6 @@ export const formatDate = (value) => {
   if (value.length < 10) return value
   const date = new Date(value)
 
-  console.log(date.getDay())
   return date.getDay() ? new Intl.DateTimeFormat(isoName, {
     year: 'numeric',
     month: '2-digit',
