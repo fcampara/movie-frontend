@@ -1,5 +1,5 @@
 <template>
-  <q-card>
+  <q-card >
     <q-img  :src="`${movieURLImg}${movie.posterPath}`"/>
 
     <q-card-section>
