@@ -1,12 +1,20 @@
 import Axios from 'axios'
 import { Notify } from 'quasar'
+import humps from 'humps'
 import store from '../store'
 const baseURL = process.env.n.BASE_URL
 const movieURL = process.env.n.MOVIE_API_URL
 const movieKey = process.env.n.MOVIE_API_KEY
 
 const instanceMovies = Axios.create({
-  baseURL: `${movieURL}`
+  baseURL: `${movieURL}`,
+  transformResponse: (data) => {
+    let response = JSON.parse(data)
+    if (response) {
+      response = humps.camelizeKeys(response)
+    }
+    return response
+  }
 })
 
 instanceMovies.defaults.params = {}
@@ -32,6 +40,7 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
   const { errors = [] } = error.response.data || {}
   const [message] = errors
+  console.log(error.response.data)
   if (message) {
     Notify.create({
       color: 'red-5',

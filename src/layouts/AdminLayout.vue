@@ -24,7 +24,7 @@
       <q-tabs align="left">
         <q-route-tab to="/home" :label="$t('discovery')" />
         <q-route-tab to="/suggestions" :label="$t('suggestions')" />
-        <q-route-tab to="/page3" :label="$t('myList')" />
+        <q-route-tab to="/myList" :label="$t('myList')" />
       </q-tabs>
     </q-header>
 

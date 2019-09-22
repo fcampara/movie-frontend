@@ -2,37 +2,32 @@
   <q-page>
     <div class="container--movie-card">
       <MovieCard
-        v-for="movie in moviesDiscovery"
+        v-for="movie in myList"
         :movie="movie"
-        :key="movie.id"
+        :key="movie.movieId"
         @onAdd="handleAdd"
       />
     </div>
   </q-page>
 </template>
-
 <script>
-import { mapActions, mapState } from 'vuex'
 import MovieCard from '../components/MovieCard'
+import { mapActions, mapState } from 'vuex'
 export default {
-  name: 'PageIndex',
+  name: 'PageMyList',
   components: { MovieCard },
   mounted () {
-    this.listDiscovery()
+    this.getMyListMovies()
   },
   computed: {
     ...mapState({
-      moviesDiscovery: state => state.movie.discovery.results
+      myList: state => state.movie.myList
     })
   },
   methods: {
     ...mapActions({
-      listDiscovery: 'movie/moviesDicovery',
-      addMovieToMyList: 'movie/addMovieToMyList'
-    }),
-    handleAdd (movie) {
-      this.addMovieToMyList(movie)
-    }
+      getMyListMovies: 'movie/getMyListMovies'
+    })
   }
 }
 </script>

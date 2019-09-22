@@ -1,6 +1,6 @@
 <template>
   <q-card>
-    <q-img  :src="`${movieURLImg}${movie.poster_path}`"/>
+    <q-img  :src="`${movieURLImg}${movie.posterPath}`"/>
 
     <q-card-section>
       <q-btn
@@ -21,12 +21,12 @@
 
       <div class="text-subtitle1">
         <q-icon name="fab fa-imdb" class="q-mr-md" size="3rem"/>
-        <span>{{ movie.vote_average }}</span>
+        <span>{{ movie.voteAverage }}</span>
       </div>
     </q-card-section>
 
     <q-card-section>
-      <div class="text-subtitle1">{{ $t('releaseDate') }} {{ movie.release_date }}</div>
+      <div class="text-subtitle1">{{ $t('releaseDate') }} {{ movie.releaseDate }}</div>
       <div class="text-subtitle2 full-height text-grey">{{ movie.overview }}</div>
     </q-card-section>
 

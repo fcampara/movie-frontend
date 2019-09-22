@@ -1,4 +1,4 @@
 export default {
   discovery: [],
-  pages: []
+  myList: []
 }
