@@ -10,13 +10,7 @@
           Smart Movies
         </q-toolbar-title>
         <q-space/>
-        <div class="toolbar-input-container row no-wrap q-mt-xs">
-          <q-input v-bind="_config.input" class="full-width" :label="$t('search')">
-            <template v-slot:append>
-              <q-icon name="search"/>
-            </template>
-          </q-input>
-        </div>
+        <SearchInputMovies/>
         <q-space/>
         <q-btn :label="$t('exit')" icon="fas fa-sign-out-alt" @click="handleLogout()"/>
       </q-toolbar>
@@ -38,8 +32,10 @@
 </template>
 
 <script>
+import SearchInputMovies from '../components/SearchInputMovies'
 import { mapActions, mapState } from 'vuex'
 export default {
+  components: { SearchInputMovies },
   async created () {
     const { id, name } = this.profile
 
@@ -65,9 +61,3 @@ export default {
   }
 }
 </script>
-
-<style lang="sass">
-.toolbar-input-container
-    min-width: 100px
-    width: 55%
-</style>

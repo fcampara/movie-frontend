@@ -1,6 +1,6 @@
 <template>
-  <q-card >
-    <q-img  :src="`${movieURLImg}${movie.posterPath}`"/>
+  <q-card>
+    <q-img  :src="`${movieURLImg}${movie && movie.posterPath}`"/>
 
     <q-card-section>
       <q-btn
@@ -14,7 +14,7 @@
       />
 
       <div class="row no-wrap items-center">
-        <div class="col text-h6 ellipsis">{{ movie.title || movie.movieName }}</div>
+        <div class="col text-h6 ellipsis">{{ movie && movie.title || movie && movie.movieName }}</div>
         <div v-if="!isInList" class="col-auto text-grey q-pt-md">
           {{ isMyList ? $t('removeMyList') : $t('addMyList')}}
         </div>
@@ -22,13 +22,13 @@
 
       <div class="text-subtitle1">
         <q-icon name="fab fa-imdb" class="q-mr-md" size="3rem"/>
-        <span>{{ movie.voteAverage }}</span>
+        <span>{{ movie && movie.voteAverage }}</span>
       </div>
     </q-card-section>
 
     <q-card-section>
-      <div class="text-subtitle1">{{ $t('releaseDate') }} {{ movie.releaseDate }}</div>
-      <div class="text-subtitle2 full-height text-grey">{{ movie.overview }}</div>
+      <div class="text-subtitle1">{{ $t('releaseDate') }} {{ movie && movie.releaseDate }}</div>
+      <div class="text-subtitle2 full-height text-grey">{{ movie && movie.overview }}</div>
     </q-card-section>
 
     <q-card-actions class="row justify-around actions">
@@ -36,7 +36,7 @@
       <q-btn
         flat
         :label="$t('watched')"
-        :color="isWatched || movie.watched ? 'positive' : 'primary'"
+        :color="isWatched || movie && movie.watched ? 'positive' : 'primary'"
         @click="$emit('onClickWatched', { ...movie, watched: isWatched || movie.watched })"
       />
     </q-card-actions>
@@ -52,7 +52,7 @@ export default {
   },
   computed: {
     isMyList () {
-      return !!this.movie.movieId
+      return this.movie && !!this.movie.movieId
     }
   },
   data: () => ({

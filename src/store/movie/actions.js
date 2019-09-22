@@ -20,6 +20,23 @@ export function moviesDicovery ({ commit }) {
   })
 }
 
+export function searchMovies ({ commit }, query) {
+  const page = 1
+  return new Promise((resolve, reject) => {
+    axiosMovies('/search/movie', {
+      params: {
+        language: 'en-US',
+        query,
+        page
+      }
+    }).then(({ data }) => {
+      return resolve(data)
+    }).catch((err) => {
+      return reject(err)
+    })
+  })
+}
+
 export function addMovieToMyList ({ commit, rootState }, payload) {
   Loading.show()
   return new Promise((resolve, reject) => {
