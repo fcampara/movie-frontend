@@ -2,7 +2,6 @@
   <q-page @keypress.enter="handleSubmit">
     <div class="row q-px-xl q-mt-xl">
       <div class="row col-12 justify-center q-mb-md">
-        teste
       </div>
         <q-input
         v-model="form.name"

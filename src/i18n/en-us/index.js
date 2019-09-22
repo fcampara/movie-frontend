@@ -26,5 +26,7 @@ export default {
   schedule: 'Schedule',
   wantWatch: 'Want Watch',
   watched: 'Watched',
-  removeMyList: 'Remove from my list'
+  removeMyList: 'Remove from my list',
+  language: 'Language',
+  noResult: 'No Results'
 }

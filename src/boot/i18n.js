@@ -1,12 +1,20 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
 import messages from 'src/i18n'
+import { LocalStorage, Quasar } from 'quasar'
+import { language } from '../constants/localStorage'
 
 Vue.use(VueI18n)
 
+const isoName = LocalStorage.getItem(language) || 'pt-br'
+
+import(`quasar/lang/${isoName}`).then(lang => {
+  Quasar.lang.set(lang.default)
+})
+
 const i18n = new VueI18n({
-  locale: 'en-us',
-  fallbackLocale: 'en-us',
+  locale: isoName,
+  fallbackLocale: 'pt-br',
   messages
 })
 

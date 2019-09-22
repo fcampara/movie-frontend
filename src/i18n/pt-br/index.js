@@ -1,0 +1,32 @@
+// This is just an example,
+// so you can safely delete all default props below
+
+export default {
+  exit: 'Sair',
+  email: 'E-mail',
+  password: 'Senha',
+  logIn: 'Entrar',
+  loadingUserInformation: 'Carregando informações do usuário',
+  fieldIsRequired: 'Campo requerido',
+  invalidEmail: 'E-mail inválido',
+  search: 'Pesquisar',
+  createAccount: 'Criar conta',
+  confirmPassword: 'Confirmar senha',
+  birthDay: 'Data de nascimento',
+  successCreateUser: 'Sucesso em criar usuário',
+  creteNewProfile: 'Criar no perfil',
+  save: 'Salvar',
+  name: 'Nome',
+  cancel: 'Canecelar',
+  discovery: 'Descobertas',
+  suggestions: 'Sugestões',
+  myList: 'Minha lista',
+  addMyList: 'Adiciona a minha lista',
+  releaseDate: 'Data de lançamento',
+  schedule: 'Agendar',
+  wantWatch: 'Quero assistir',
+  watched: 'Assistido',
+  removeMyList: 'Remove da minha lista',
+  language: 'Idioma',
+  noResult: 'Sem resultado'
+}

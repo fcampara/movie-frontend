@@ -40,7 +40,7 @@ module.exports = function (ctx) {
 
     framework: {
       // iconSet: 'ionicons-v4', // Quasar icon set
-      // lang: 'pt-br', // Quasar language pack
+      lang: 'pt-br', // Quasar language pack
 
       // Possible values for "all":
       // * 'auto' - Auto-import needed Quasar components & directives

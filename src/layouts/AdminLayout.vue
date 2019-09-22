@@ -20,6 +20,8 @@
         <q-route-tab to="/suggestions" :label="$t('suggestions')" />
         <q-route-tab to="/myList" :label="$t('myList')" />
       </q-tabs>
+      <q-space/>
+      <Language/>
     </q-header>
 
     <q-page-container>
@@ -32,10 +34,11 @@
 </template>
 
 <script>
+import Language from '../components/Language'
 import SearchInputMovies from '../components/SearchInputMovies'
 import { mapActions, mapState } from 'vuex'
 export default {
-  components: { SearchInputMovies },
+  components: { SearchInputMovies, Language },
   async created () {
     const { id, name } = this.profile
 

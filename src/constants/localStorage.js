@@ -5,3 +5,6 @@ export const userInfo = 'USER_INFO'
 // Profile
 export const profileName = 'PROFILE_NAME'
 export const profileId = 'PROFILE_ID'
+
+// Language
+export const language = 'LANGUAGE'

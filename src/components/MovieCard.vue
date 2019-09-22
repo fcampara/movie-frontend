@@ -27,7 +27,7 @@
     </q-card-section>
 
     <q-card-section>
-      <div class="text-subtitle1">{{ $t('releaseDate') }} {{ movie && movie.releaseDate }}</div>
+      <div class="text-subtitle1">{{ $t('releaseDate') }} - {{ movie && movie.releaseDate }}</div>
       <div class="text-subtitle2 full-height text-grey">{{ movie && movie.overview }}</div>
     </q-card-section>
 

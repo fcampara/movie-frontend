@@ -1,14 +1,15 @@
 import { axiosMovies, axios } from '../../boot/axios'
 import { Loading, extend } from 'quasar'
-import { formatMovies } from './functions'
+import { formatMovies, getLanguage } from './functions'
 
 const URL = '/movies'
 export function moviesDicovery ({ commit }) {
+  const language = getLanguage()
   Loading.show()
   const page = 1
   axiosMovies('/discover/movie', {
     params: {
-      language: 'en-US',
+      language,
       sort_by: 'popularity.desc',
       include_video: true,
       page
@@ -23,12 +24,14 @@ export function moviesDicovery ({ commit }) {
 export function suggestionsMovies ({ commit, state }, payload) {
   Loading.show()
   return new Promise((resolve, reject) => {
+    const language = getLanguage()
     const genres = state.myList.map(({ genres }) => genres).flat().filter((genre) => genre)
     const noRepeatGenres = [...new Set(genres)]
     const params = 'with_genres=' + noRepeatGenres.join('&with_genres=')
     const page = 1
     axiosMovies(`/discover/movie?${params}`, {
       params: {
+        language,
         page
       }
     }).then(({ data }) => {
@@ -43,11 +46,12 @@ export function suggestionsMovies ({ commit, state }, payload) {
 }
 
 export function searchMovies (_, query) {
+  const language = getLanguage()
   const page = 1
   return new Promise((resolve, reject) => {
     axiosMovies('/search/movie', {
       params: {
-        language: 'en-US',
+        language,
         query,
         page
       }
