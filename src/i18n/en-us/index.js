@@ -22,5 +22,8 @@ export default {
   suggestions: 'Suggestions',
   myList: 'My list',
   addMyList: 'Add to my list',
-  releaseDate: 'Release date'
+  releaseDate: 'Release date',
+  schedule: 'Schedule',
+  wantWatch: 'Want Watch',
+  watched: 'Watched'
 }

@@ -1,7 +1,12 @@
 <template>
   <q-page>
     <div class="container--movie-card">
-      <MovieCard v-for="movie in moviesDiscovery" :movie="movie" :key="movie.id"/>
+      <MovieCard
+        v-for="movie in moviesDiscovery"
+        :movie="movie"
+        :key="movie.id"
+        @onAdd="handleAdd"
+      />
     </div>
   </q-page>
 </template>
@@ -23,7 +28,10 @@ export default {
   methods: {
     ...mapActions({
       listDiscovery: 'movie/moviesDicovery'
-    })
+    }),
+    handleAdd (movie) {
+      console.log(movie)
+    }
   }
 }
 </script>

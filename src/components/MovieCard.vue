@@ -9,6 +9,7 @@
         icon="add"
         class="absolute"
         style="top: 0; right: 28px; transform: translateY(-50%);"
+        @click="$emit('onAdd', movie)"
       />
 
       <div class="row no-wrap items-center">
@@ -29,12 +30,10 @@
       <div class="text-subtitle2 full-height text-grey">{{ movie.overview }}</div>
     </q-card-section>
 
-    <q-card-actions class="actions">
-      <q-btn flat round icon="event" v-close-popup />
-      <q-btn flat v-close-popup>5:30PM</q-btn>
-      <q-btn flat v-close-popup>7:30PM</q-btn>
-      <q-btn flat v-close-popup>9:00PM</q-btn>
-      <q-btn flat color="primary" v-close-popup>Reserve</q-btn>
+    <q-card-actions class="row justify-around actions">
+      <q-btn flat :label="$t('schedule')" />
+      <q-btn flat :label="$t('wantWatch')"/>
+      <q-btn flat :label="$t('watched')"/>
     </q-card-actions>
   </q-card>
 </template>
