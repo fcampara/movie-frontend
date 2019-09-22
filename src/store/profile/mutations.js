@@ -24,3 +24,11 @@ export function setProfile (state, payload) {
   LocalStorage.set(profileId, state.id)
   LocalStorage.set(profileName, state.name)
 }
+
+export function logout (state) {
+  state.id = null
+  state.name = null
+
+  LocalStorage.remove(profileId, state.id)
+  LocalStorage.remove(profileName, state.name)
+}

@@ -18,6 +18,7 @@ export function loginWithMailPassword ({ commit }, payload) {
 
 export function logout ({ commit }) {
   commit('logout', null)
+  commit('profile/logout', null, { root: true })
 }
 
 export function createAccount (_, payload) {
