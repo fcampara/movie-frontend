@@ -2,6 +2,16 @@ import Axios from 'axios'
 import { Notify } from 'quasar'
 import store from '../store'
 const baseURL = process.env.n.BASE_URL
+const movieURL = process.env.n.MOVIE_API_URL
+const movieKey = process.env.n.MOVIE_API_KEY
+
+const instanceMovies = Axios.create({
+  baseURL: `${movieURL}`
+})
+
+instanceMovies.defaults.params = {}
+instanceMovies.defaults.params['api_key'] = movieKey
+
 const instance = Axios.create({
   baseURL,
   headers: {
@@ -40,3 +50,4 @@ export default async ({ Vue }) => {
 }
 
 export const axios = instance
+export const axiosMovies = instanceMovies

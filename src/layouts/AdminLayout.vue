@@ -22,9 +22,9 @@
       </q-toolbar>
 
       <q-tabs align="left">
-        <q-route-tab to="/admin" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
+        <q-route-tab to="/home" :label="$t('discovery')" />
+        <q-route-tab to="/suggestions" :label="$t('suggestions')" />
+        <q-route-tab to="/page3" :label="$t('myList')" />
       </q-tabs>
     </q-header>
 
@@ -38,8 +38,18 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 export default {
+  created () {
+    const { id, name } = this.profile
+
+    if (!id && !name) this.$router.replace('/profile')
+  },
+  computed: {
+    ...mapState({
+      profile: state => state.profile
+    })
+  },
   methods: {
     ...mapActions({
       logout: 'auth/logout'
@@ -47,6 +57,11 @@ export default {
     handleLogout () {
       this.logout()
       this.$router.push('/auth')
+    }
+  },
+  watch: {
+    '$router' (newValue) {
+      console.log(newValue)
     }
   }
 }

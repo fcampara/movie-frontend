@@ -17,5 +17,10 @@ export default {
   creteNewProfile: 'Create new profile',
   save: 'Save',
   name: 'Name',
-  cancel: 'Cancel'
+  cancel: 'Cancel',
+  discovery: 'Discovery',
+  suggestions: 'Suggestions',
+  myList: 'My list',
+  addMyList: 'Add to my list',
+  releaseDate: 'Release date'
 }

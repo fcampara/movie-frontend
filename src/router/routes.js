@@ -1,11 +1,12 @@
 
 const routes = [
   {
-    path: '/admin',
+    path: '/home',
     component: () => import('layouts/AdminLayout.vue'),
     meta: { authRequired: true },
     children: [
-      { path: '', name: 'index', component: () => import('pages/Index.vue') }
+      { path: '', name: 'index', component: () => import('pages/Index.vue') },
+      { path: '/suggestions', name: 'suggestion', component: () => import('pages/Suggestions.vue') }
     ]
   },
   {

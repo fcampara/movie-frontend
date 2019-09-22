@@ -15,7 +15,7 @@
   </div>
 </template>
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'ProfileList',
   computed: {
@@ -27,8 +27,12 @@ export default {
     ...mapActions({
       removeProfile: 'profile/removeProfile'
     }),
-    handleProfile ({ id }) {
-      console.log(id)
+    ...mapMutations({
+      setProfile: 'profile/setProfile'
+    }),
+    handleProfile (profile) {
+      this.setProfile(profile)
+      this.$router.replace('/home')
     },
     handleRemove ({ id }) {
       this.removeProfile({ id })

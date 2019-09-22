@@ -62,7 +62,7 @@ export default {
       const { email, password } = this
       const payload = extend({}, { email, password })
       this.authLogin(payload).then(() => {
-        this.$router.replace('/admin')
+        this.$router.replace('/home')
       }).catch(() => {
         this.loading = false
       }).finally(() => {
