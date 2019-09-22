@@ -40,7 +40,6 @@ instance.interceptors.response.use((response) => {
 }, (error) => {
   const { errors = [] } = error.response.data || {}
   const [message] = errors
-  console.log(error.response.data)
   if (message) {
     Notify.create({
       color: 'red-5',

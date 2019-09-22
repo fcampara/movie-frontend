@@ -33,8 +33,12 @@
 
     <q-card-actions class="row justify-around actions">
       <q-btn flat :label="$t('schedule')" />
-      <q-btn flat :label="$t('wantWatch')"/>
-      <q-btn flat :label="$t('watched')"/>
+      <q-btn
+        flat
+        :label="$t('watched')"
+        :color="isWatched || movie.watched ? 'positive' : 'primary'"
+        @click="$emit('onClickWatched', { ...movie, watched: isWatched || movie.watched })"
+      />
     </q-card-actions>
   </q-card>
 </template>
@@ -43,7 +47,8 @@ import { movieURLImg } from '../constants/envKeys'
 export default {
   props: {
     movie: Object,
-    isInList: Boolean
+    isInList: Boolean,
+    isWatched: Boolean
   },
   computed: {
     isMyList () {

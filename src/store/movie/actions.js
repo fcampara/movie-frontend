@@ -1,6 +1,8 @@
 import { axiosMovies, axios } from '../../boot/axios'
-import { Loading } from 'quasar'
+import { Loading, extend } from 'quasar'
+import { formatMovies } from './functions'
 
+const URL = '/movies'
 export function moviesDicovery ({ commit }) {
   Loading.show()
   const page = 1
@@ -22,20 +24,8 @@ export function addMovieToMyList ({ commit, rootState }, payload) {
   Loading.show()
   return new Promise((resolve, reject) => {
     const profileId = rootState.profile.id
-    const { id, title, posterPath, voteAverage, releaseDate, overview, genreIds } = payload
-    const formattedPayload = {
-      movieId: id,
-      movieName: title,
-      wantWatch: true,
-      genres: genreIds,
-      details: {
-        posterPath,
-        voteAverage,
-        releaseDate,
-        overview
-      }
-    }
-    axios.post(`/movies/${profileId}/myList`, formattedPayload).then(({ data }) => {
+    const formattedPayload = formatMovies({ ...payload, wantWatched: true })
+    axios.post(`${URL}/${profileId}/myList`, formattedPayload).then(({ data }) => {
       commit('addMyList', data)
       return resolve(data)
     }).catch((err) => {
@@ -50,7 +40,7 @@ export function getMyListMovies ({ rootState, commit }) {
   Loading.show()
   return new Promise((resolve, reject) => {
     const profileId = rootState.profile.id
-    axios(`/movies/${profileId}/myList`).then(({ data }) => {
+    axios(`${URL}/${profileId}/myList`).then(({ data }) => {
       commit('setMyList', data)
       return resolve(data)
     }).catch((err) => {
@@ -64,8 +54,27 @@ export function getMyListMovies ({ rootState, commit }) {
 export function deleteMovieFromMyList ({ commit, rootState }, payload) {
   return new Promise((resolve, reject) => {
     const profileId = rootState.profile.id
-    axios.delete(`/movies/${profileId}/myList/${payload.movieId}`).then(({ data }) => {
-      commit('removeMovieFromList', payload)
+    axios.delete(`${URL}/${profileId}/myList/${payload.movieId}`).then(({ data }) => {
+      data = extend({}, data)
+      if (payload.watched) commit('updateMyListSetWatched', data)
+      else commit('removeMovieFromList', payload)
+      return resolve(data)
+    }).catch((err) => {
+      return reject(err)
+    }).finally(() => {
+      Loading.hide()
+    })
+  })
+}
+
+export function addWatchedToMovie ({ commit, state, rootState }, payload) {
+  Loading.show()
+  const profileId = rootState.profile.id
+  const watched = !payload.watched
+  const formattedPayload = formatMovies({ ...payload, watched })
+  return new Promise((resolve, reject) => {
+    axios.put(`${URL}/${profileId}/watched/${formattedPayload.movieId}`, formattedPayload).then(({ data }) => {
+      commit('updateMyListSetWatched', data)
       return resolve(data)
     }).catch((err) => {
       return reject(err)
