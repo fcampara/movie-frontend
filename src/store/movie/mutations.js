@@ -33,3 +33,7 @@ export function updateMyListSetWatched (state, payload) {
     state.myList.push({ ...details, ...rest })
   }
 }
+
+export function setSuggestionList (state, payload) {
+  state.suggestions = payload.results
+}

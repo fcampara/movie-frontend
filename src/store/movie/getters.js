@@ -1,4 +1,3 @@
-/*
-export function someGetter (state) {
+export function wantWatch (state) {
+  return state.myList.filter(({ wantWatch }) => wantWatch)
 }
-*/

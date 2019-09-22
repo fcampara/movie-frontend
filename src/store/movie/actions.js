@@ -20,7 +20,29 @@ export function moviesDicovery ({ commit }) {
   })
 }
 
-export function searchMovies ({ commit }, query) {
+export function suggestionsMovies ({ commit, state }, payload) {
+  Loading.show()
+  return new Promise((resolve, reject) => {
+    const genres = state.myList.map(({ genres }) => genres).flat().filter((genre) => genre)
+    const noRepeatGenres = [...new Set(genres)]
+    const params = 'with_genres=' + noRepeatGenres.join('&with_genres=')
+    const page = 1
+    axiosMovies(`/discover/movie?${params}`, {
+      params: {
+        page
+      }
+    }).then(({ data }) => {
+      commit('setSuggestionList', data)
+      return resolve(data)
+    }).catch((err) => {
+      return reject(err)
+    }).finally(() => {
+      Loading.hide()
+    })
+  })
+}
+
+export function searchMovies (_, query) {
   const page = 1
   return new Promise((resolve, reject) => {
     axiosMovies('/search/movie', {
@@ -84,7 +106,7 @@ export function deleteMovieFromMyList ({ commit, rootState }, payload) {
   })
 }
 
-export function addWatchedToMovie ({ commit, state, rootState }, payload) {
+export function addWatchedToMovie ({ commit, rootState }, payload) {
   Loading.show()
   const profileId = rootState.profile.id
   const watched = !payload.watched
