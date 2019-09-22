@@ -18,7 +18,7 @@ export function moviesDicovery ({ commit }) {
   })
 }
 
-export function addMovieToMyList ({ rootState }, payload) {
+export function addMovieToMyList ({ commit, rootState }, payload) {
   Loading.show()
   return new Promise((resolve, reject) => {
     const profileId = rootState.profile.id
@@ -36,6 +36,7 @@ export function addMovieToMyList ({ rootState }, payload) {
       }
     }
     axios.post(`/movies/${profileId}/myList`, formattedPayload).then(({ data }) => {
+      commit('addMyList', data)
       return resolve(data)
     }).catch((err) => {
       return reject(err)

@@ -40,10 +40,12 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 export default {
-  created () {
+  async created () {
     const { id, name } = this.profile
 
-    if (!id && !name) this.$router.replace('/profile')
+    if (!id && !name) return this.$router.replace('/profile')
+    await this.listDiscovery()
+    this.getMyListMovies()
   },
   computed: {
     ...mapState({
@@ -52,16 +54,13 @@ export default {
   },
   methods: {
     ...mapActions({
-      logout: 'auth/logout'
+      logout: 'auth/logout',
+      listDiscovery: 'movie/moviesDicovery',
+      getMyListMovies: 'movie/getMyListMovies'
     }),
     handleLogout () {
       this.logout()
       this.$router.push('/auth')
-    }
-  },
-  watch: {
-    '$router' (newValue) {
-      console.log(newValue)
     }
   }
 }

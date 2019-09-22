@@ -16,9 +16,6 @@ import { mapActions, mapState } from 'vuex'
 export default {
   name: 'PageMyList',
   components: { MovieCard },
-  mounted () {
-    this.getMyListMovies()
-  },
   computed: {
     ...mapState({
       myList: state => state.movie.myList
@@ -26,7 +23,6 @@ export default {
   },
   methods: {
     ...mapActions({
-      getMyListMovies: 'movie/getMyListMovies',
       deleteMovieFromMyList: 'movie/deleteMovieFromMyList'
     }),
     handleRemove (movie) {

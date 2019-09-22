@@ -4,6 +4,7 @@
 
     <q-card-section>
       <q-btn
+        v-if="!isInList"
         fab
         :color="isMyList ? 'negative' : 'primary'"
         :icon="isMyList ? 'delete' : 'add'"
@@ -14,7 +15,7 @@
 
       <div class="row no-wrap items-center">
         <div class="col text-h6 ellipsis">{{ movie.title || movie.movieName }}</div>
-        <div class="col-auto text-grey q-pt-md">
+        <div v-if="!isInList" class="col-auto text-grey q-pt-md">
           {{ isMyList ? $t('removeMyList') : $t('addMyList')}}
         </div>
       </div>
@@ -41,7 +42,8 @@
 import { movieURLImg } from '../constants/envKeys'
 export default {
   props: {
-    movie: Object
+    movie: Object,
+    isInList: Boolean
   },
   computed: {
     isMyList () {

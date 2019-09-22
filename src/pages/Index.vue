@@ -4,6 +4,7 @@
       <MovieCard
         v-for="movie in moviesDiscovery"
         :movie="movie"
+        :isInList="isInList(movie)"
         :key="movie.id"
         @onAdd="handleAdd"
       />
@@ -17,21 +18,26 @@ import MovieCard from '../components/MovieCard'
 export default {
   name: 'PageIndex',
   components: { MovieCard },
-  mounted () {
-    this.listDiscovery()
-  },
   computed: {
     ...mapState({
-      moviesDiscovery: state => state.movie.discovery.results
+      moviesDiscovery: state => state.movie.discovery.results,
+      myList: state => state.movie.myList
     })
   },
   methods: {
     ...mapActions({
-      listDiscovery: 'movie/moviesDicovery',
+
       addMovieToMyList: 'movie/addMovieToMyList'
     }),
     handleAdd (movie) {
-      this.addMovieToMyList(movie)
+      this.addMovieToMyList(movie).then(() => {
+        this.$forceUpdate()
+      })
+    },
+    isInList (movie) {
+      console.log('isInList')
+      console.log(this.myList)
+      return this.myList.some(({ movieId }) => movieId === movie.id)
     }
   }
 }
