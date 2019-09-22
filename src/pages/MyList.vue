@@ -5,7 +5,7 @@
         v-for="movie in myList"
         :movie="movie"
         :key="movie.movieId"
-        @onAdd="handleAdd"
+        @onRemove="handleRemove"
       />
     </div>
   </q-page>
@@ -26,8 +26,12 @@ export default {
   },
   methods: {
     ...mapActions({
-      getMyListMovies: 'movie/getMyListMovies'
-    })
+      getMyListMovies: 'movie/getMyListMovies',
+      deleteMovieFromMyList: 'movie/deleteMovieFromMyList'
+    }),
+    handleRemove (movie) {
+      this.deleteMovieFromMyList(movie)
+    }
   }
 }
 </script>

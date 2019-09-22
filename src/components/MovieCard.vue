@@ -5,17 +5,17 @@
     <q-card-section>
       <q-btn
         fab
-        color="primary"
-        icon="add"
+        :color="isMyList ? 'negative' : 'primary'"
+        :icon="isMyList ? 'delete' : 'add'"
         class="absolute"
         style="top: 0; right: 28px; transform: translateY(-50%);"
-        @click="$emit('onAdd', movie)"
+        @click="isMyList ? $emit('onRemove', movie) : $emit('onAdd', movie)"
       />
 
       <div class="row no-wrap items-center">
-        <div class="col text-h6 ellipsis">{{ movie.title }}</div>
+        <div class="col text-h6 ellipsis">{{ movie.title || movie.movieName }}</div>
         <div class="col-auto text-grey q-pt-md">
-          {{ $t('addMyList') }}
+          {{ isMyList ? $t('removeMyList') : $t('addMyList')}}
         </div>
       </div>
 
@@ -42,6 +42,11 @@ import { movieURLImg } from '../constants/envKeys'
 export default {
   props: {
     movie: Object
+  },
+  computed: {
+    isMyList () {
+      return !!this.movie.movieId
+    }
   },
   data: () => ({
     movieURLImg

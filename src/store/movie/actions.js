@@ -59,3 +59,17 @@ export function getMyListMovies ({ rootState, commit }) {
     })
   })
 }
+
+export function deleteMovieFromMyList ({ commit, rootState }, payload) {
+  return new Promise((resolve, reject) => {
+    const profileId = rootState.profile.id
+    axios.delete(`/movies/${profileId}/myList/${payload.movieId}`).then(({ data }) => {
+      commit('removeMovieFromList', payload)
+      return resolve(data)
+    }).catch((err) => {
+      return reject(err)
+    }).finally(() => {
+      Loading.hide()
+    })
+  })
+}

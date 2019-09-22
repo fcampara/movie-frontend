@@ -5,3 +5,7 @@ export function setListDiscovery (state, payload) {
 export function setMyList (state, payload) {
   state.myList = payload.data.map(({ details, ...rest }) => ({ ...details, ...rest }))
 }
+
+export function removeMovieFromList (state, payload) {
+  state.myList = state.myList.filter((movie) => movie.movieId !== payload.movieId)
+}

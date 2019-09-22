@@ -25,5 +25,6 @@ export default {
   releaseDate: 'Release date',
   schedule: 'Schedule',
   wantWatch: 'Want Watch',
-  watched: 'Watched'
+  watched: 'Watched',
+  removeMyList: 'Remove from my list'
 }
