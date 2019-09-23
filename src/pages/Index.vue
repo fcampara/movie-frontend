@@ -23,7 +23,7 @@ export default {
   components: { MovieCard },
   computed: {
     ...mapState({
-      moviesDiscovery: state => state.movie.discovery.results,
+      moviesDiscovery: state => state.movie.discovery,
       myList: state => state.movie.myList
     })
   },
