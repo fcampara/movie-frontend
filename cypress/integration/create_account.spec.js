@@ -1,3 +1,5 @@
+import faker from 'faker'
+
 context('Account', () => {
   before(() => {
     cy.visit('/')
@@ -35,7 +37,7 @@ context('Account', () => {
     cy.get('[data-cy=email]').parent().parent().should('have.class', 'text-negative')
     cy.get('[data-cy=password]').parent().parent().should('have.class', 'text-negative')
     cy.get('[data-cy=repassword]').parent().parent().should('have.class', 'text-negative')
-    // cy.get('[data-cy=birthDay]').parent().parent().should('have.class', 'text-negative')
+    cy.get('[data-cy="birthDay"] > div').parent().parent().should('have.class', 'text-negative')
     cy.get('[data-cy=btn-create]').should('be.visible')
   })
 })

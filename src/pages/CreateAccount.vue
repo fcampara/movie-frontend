@@ -46,7 +46,7 @@
         v-model="form.birthDay"
         class="col-12"
         :label="`${$t('birthDay')} *`"
-        :rules="_getRules().isRequired"
+        :rules="_getRules()._isRequired"
       />
       <q-btn
         data-cy="btn-create"
