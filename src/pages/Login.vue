@@ -38,7 +38,7 @@
             data-cy="bt-create-account"
             class="bg-secondary text-primary full-width"
             :label="$t('createAccount')"
-            @click="() => $router.push('create')"
+            @click="() => $router.push('/auth/create')"
           />
         </div>
       </div>
