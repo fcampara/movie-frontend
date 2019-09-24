@@ -10,7 +10,7 @@ Caso queira executar em modo de desenvolvimento deve ser criado um arquivo .env.
 as váriaveis de ambientes para serem definidas são as seguintes
 
 ```
-  BASE_URL=h
+  BASE_URL=
 
   MOVIE_API_KEY=
   MOVIE_API_URL=
@@ -28,3 +28,6 @@ Os testes foram desenvolvidos com o framework Cypress.js, para poder executar os
 ```
   $ npm test
 ```
+
+Projeto está hospedado no servidor surge.sh, para acessar o mesmo bastar acessar o seguinte link
+![http://smart-movies.surge.sh](http://smart-movies.surge.sh)
