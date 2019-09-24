@@ -3,7 +3,7 @@ import faker from 'faker'
 const email = faker.internet.email()
 const password = faker.internet.password()
 
-context('Guard Route', () => {
+context('Profile', () => {
   before(() => {
     cy.visit('/')
 
