@@ -79,4 +79,37 @@ context('Movies', () => {
     })
     cy.get(':nth-child(1) > .q-card__actions > [data-cy=btn-watch-movie]').should('have.class', 'text-positive')
   })
+
+  it('Check suggestion no have suggestion', () => {
+    cy.server()
+    cy.route('GET', '**/3/discover/movie?with_genres*')
+
+    cy.get('[href="/suggestions"]').click()
+
+    cy.wait('@updateList').should(({ response, status }) => {
+      const { body } = response
+      expect(status).to.eq(200)
+      expect(body).to.have.all.keys('data', 'success')
+      expect(body.data)
+        .to.have.all
+        .keys('page', 'results', 'total_pages', 'total_results')
+    })
+  })
+
+  it('Check have suggestion', () => {
+
+  })
+
+  it('Check no have value in my list', () => {
+
+  })
+
+  it('Check have value in my list', () => {
+
+
+  })
+
+  it('Search movie spider and select', () => {
+
+  })
 })
