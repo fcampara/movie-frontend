@@ -5,7 +5,8 @@ import store from '../store'
 import { baseURL, movieURL, movieKey } from '../constants/envKeys'
 
 const instanceMovies = Axios.create({
-  baseURL: `${movieURL}`,
+  baseURL: movieURL,
+  timeout: 30000,
   transformResponse: (data) => {
     let response = JSON.parse(data)
     if (response) {
@@ -20,6 +21,7 @@ instanceMovies.defaults.params['api_key'] = movieKey
 
 const instance = Axios.create({
   baseURL,
+  timeout: 30000,
   headers: {
     'Content-Type': 'application/json'
   }

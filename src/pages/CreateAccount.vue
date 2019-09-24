@@ -31,22 +31,12 @@
         :label="`${$t('password')} *`"
         :rules="_getRules()._isRequired"
       />
-      <q-input
-        data-cy="repassword"
-        v-model="form.repeatPassword"
-        v-bind="_config.input"
-        class="col-12"
-        ref="repeatPassword"
-        type="password"
-        :label="`${$t('confirmPassword')} *`"
-        :rules="_getRules()._isRequired"
-      />
       <CustomDatePicker
         data-cy="birthDay"
         v-model="form.birthDay"
         class="col-12"
         :label="`${$t('birthDay')} *`"
-        :rules="_getRules().isRequired"
+        :rules="_getRules()._isRequired"
       />
       <q-btn
         data-cy="btn-create"

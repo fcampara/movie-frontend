@@ -13,7 +13,7 @@
     <template v-slot:append>
       <q-icon name="event" class="cursor-pointer">
         <q-popup-proxy ref="qDateProxy" transition-show="scale" transition-hide="scale">
-          <q-date v-model="localDate" :mask="mask" @input="() => $refs.qDateProxy.hide()" />
+          <q-date v-model="localDate" :mask="mask" @input="handleSelect" />
         </q-popup-proxy>
       </q-icon>
     </template>
@@ -22,6 +22,7 @@
 <script>
 export default {
   props: {
+    rules: Array,
     value: String,
     label: String
   },
@@ -40,6 +41,10 @@ export default {
     }
   },
   methods: {
+    handleSelect () {
+      this.$refs.qDateProxy.hide()
+      this.getDate()
+    },
     getDate () {
       const { isoName } = this.$q.lang
       const { day, month, year } = this.getDesctructDate(isoName)

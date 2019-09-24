@@ -1,7 +1,6 @@
 export function setListDiscovery (state, payload) {
   const { results = [] } = payload || {}
-  const { discovery } = state
-  state.discovery = discovery.concat(results)
+  state.discovery = results
 }
 
 export function setMyList (state, payload) {

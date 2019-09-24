@@ -50,7 +50,7 @@ export default async ({ Vue }) => {
         _isEmail: [val => !!isEmail(val) || i18n.t('invalidEmail')]
       }),
       _log (data) {
-        // console.log(data)
+        console.log(data)
       }
     }
   })

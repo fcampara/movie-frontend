@@ -1,6 +1,7 @@
 <template>
   <div class="toolbar-input-container row justify-center align-center q-mt-xs">
     <q-select
+      data-cy="search-movies"
       class="full-width"
       v-bind="_config.input"
       v-model="movie"

@@ -10,6 +10,7 @@
         :icon="isMyList ? 'delete' : 'add'"
         class="absolute"
         style="top: 0; right: 28px; transform: translateY(-50%);"
+        :data-cy="`add-btn-list`"
         @click="isMyList ? $emit('onRemove', movie) : $emit('onAdd', movie)"
       />
 
@@ -34,6 +35,7 @@
     <q-card-actions class="row justify-around actions">
       <q-btn flat :label="$t('schedule')" />
       <q-btn
+        data-cy="btn-watch-movie"
         flat
         :label="$t('watched')"
         :color="isWatched || movie && movie.watched ? 'positive' : 'primary'"
