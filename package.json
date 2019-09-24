@@ -8,11 +8,12 @@
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
-    "test": "echo \"No test specified\" && exit 0"
+    "test": "./node_modules/.bin/cypress open"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "cypress": "^3.4.1",
     "date-fns": "^2.2.1",
     "humps": "^2.0.1",
     "quasar": "^1.0.0",

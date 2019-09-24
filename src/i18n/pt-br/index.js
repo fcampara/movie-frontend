@@ -9,6 +9,7 @@ export default {
   loadingUserInformation: 'Carregando informações do usuário',
   fieldIsRequired: 'Campo requerido',
   invalidEmail: 'E-mail inválido',
+  invalidDate: 'Data invália',
   search: 'Pesquisar',
   createAccount: 'Criar conta',
   confirmPassword: 'Confirmar senha',
@@ -28,5 +29,6 @@ export default {
   watched: 'Assistido',
   removeMyList: 'Remove da minha lista',
   language: 'Idioma',
-  noResult: 'Sem resultado'
+  noResult: 'Sem resultado',
+  create: 'Criar'
 }

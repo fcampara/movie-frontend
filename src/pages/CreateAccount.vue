@@ -1,9 +1,10 @@
 <template>
   <q-page @keypress.enter="handleSubmit">
-    <div class="row q-px-xl q-mt-xl">
+    <div class="row create-account q-px-xl q-mt-xl">
       <div class="row col-12 justify-center q-mb-md">
       </div>
         <q-input
+        data-cy="name"
         v-model="form.name"
         class="col-12 q-mb-md"
         :label="`${$t('name')} *`"
@@ -12,6 +13,7 @@
         :rules="_getRules()._isRequired"
       />
       <q-input
+        data-cy="email"
         v-model="form.email"
         class="col-12"
         :label="`${$t('email')} *`"
@@ -20,6 +22,7 @@
         :rules="_getRules()._isEmail"
       />
       <q-input
+        data-cy="password"
         v-model="form.password"
         v-bind="_config.input"
         class="col-12"
@@ -29,6 +32,7 @@
         :rules="_getRules()._isRequired"
       />
       <q-input
+        data-cy="repassword"
         v-model="form.repeatPassword"
         v-bind="_config.input"
         class="col-12"
@@ -37,11 +41,18 @@
         :label="`${$t('confirmPassword')} *`"
         :rules="_getRules()._isRequired"
       />
-      <CustomDatePicker v-model="form.birthDay" class="col-12" :label="`${$t('birthDay')} *`"/>
+      <CustomDatePicker
+        data-cy="birthDay"
+        v-model="form.birthDay"
+        class="col-12"
+        :label="`${$t('birthDay')} *`"
+        :rules="_getRules().isRequired"
+      />
       <q-btn
+        data-cy="btn-create"
         class="bg-primary text-secondary full-width"
         :loading="loading"
-        :label="$t('logIn')"
+        :label="$t('create')"
         @click="handleSubmit"
       />
     </div>
