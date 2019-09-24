@@ -3,6 +3,14 @@ import faker from 'faker'
 const email = faker.internet.email()
 const password = faker.internet.password()
 context('Movies', () => {
+  beforeEach(() => {
+    cy.restoreLocalStorage();
+  })
+
+  afterEach(() => {
+    cy.saveLocalStorage();
+  })
+
   before(() => {
     cy.visit('/')
 
@@ -36,8 +44,7 @@ context('Movies', () => {
   it('Check list is discovery is loaded', () => {
     cy.server()
     cy.route('GET', '**/3/discover/movie?*').as('discover')
-
-    cy.visit('/')
+    cy.visit('/home')
     cy.wait('@discover').should(({ response, status }) => {
       const { body } = response
       expect(status).to.eq(200)
@@ -80,36 +87,18 @@ context('Movies', () => {
     cy.get(':nth-child(1) > .q-card__actions > [data-cy=btn-watch-movie]').should('have.class', 'text-positive')
   })
 
-  it('Check suggestion no have suggestion', () => {
+  it('Search movies spider and click in the show modal', () => {
     cy.server()
-    cy.route('GET', '**/3/discover/movie?with_genres*')
-
-    cy.get('[href="/suggestions"]').click()
-
-    cy.wait('@updateList').should(({ response, status }) => {
+    cy.route('GET', '**/3/search/movie?*').as('search')
+    cy.get('.q-field__native > [data-cy=search-movies]').click().type('Spider')
+    cy.get(':nth-child(1) > .q-item__section--main > .q-item__label--caption').click()
+    cy.wait('@search').should(({ response, status }) => {
       const { body } = response
       expect(status).to.eq(200)
-      expect(body).to.have.all.keys('data', 'success')
-      expect(body.data)
-        .to.have.all
-        .keys('page', 'results', 'total_pages', 'total_results')
+      expect(body).to.have.all.keys("page", "results", "total_pages", "total_results")
     })
-  })
-
-  it('Check have suggestion', () => {
-
-  })
-
-  it('Check no have value in my list', () => {
-
-  })
-
-  it('Check have value in my list', () => {
-
-
-  })
-
-  it('Search movie spider and select', () => {
-
+    cy.get('.q-dialog').should('be.visible')
+    cy.get('body').type('{esc}')
+    cy.get('.q-toolbar > .q-btn').click()
   })
 })
