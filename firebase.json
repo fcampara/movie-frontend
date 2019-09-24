@@ -1,9 +1,6 @@
 {
   "hosting": {
     "public": "./dist/pwa",
-    "predeploy": [
-      "quasar build -m pwa"
-    ],
     "rewrites": [
       {
         "source": "**",
