@@ -30,4 +30,4 @@ Os testes foram desenvolvidos com o framework Cypress.js, para poder executar os
 ```
 
 Projeto está hospedado no servidor surge.sh, para acessar o mesmo bastar acessar o seguinte link
-![http://smart-movies.surge.sh](http://smart-movies.surge.sh)
+(http://smart-movies.surge.sh)
