@@ -11,7 +11,7 @@
     "test": "./node_modules/.bin/cypress open",
     "build": "quasar build -m pwa",
     "start": "node server.js",
-    "heroku-postbuild": "npm && npm build"
+    "heroku-postbuild": "npm i && npm build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
