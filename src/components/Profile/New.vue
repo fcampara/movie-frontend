@@ -1,6 +1,6 @@
 <template>
   <div>
-    <q-card class="row justify-center items-center" @click="show = true">
+    <q-card data-cy="new-profile" class="row justify-center items-center" @click="show = true">
       <div class="row justify-center items-center col-12">
         <q-icon name="fas fa-plus-circle" size="8rem"/>
       </div>
@@ -19,12 +19,12 @@
         <q-separator />
 
         <q-card-section>
-          <q-input v-model="name" v-bind="_config.input" :label="$t('name')" :rules="_getRules()._isRequired"/>
+          <q-input v-model="name" data-cy="name" v-bind="_config.input" :label="$t('name')" :rules="_getRules()._isRequired"/>
         </q-card-section>
 
         <q-card-actions class="row justify-end">
-          <q-btn color="negative" :loading="loading" @click="handleClose">{{ $t('cancel') }}</q-btn>
-          <q-btn color="positive" :loading="loading" @click="handleSubmit">{{ $t('save') }}</q-btn>
+          <q-btn color="negative" data-cy="btn-cancel" :loading="loading" @click="handleClose">{{ $t('cancel') }}</q-btn>
+          <q-btn color="positive" data-cy="btn-save" :loading="loading" @click="handleSubmit">{{ $t('save') }}</q-btn>
         </q-card-actions>
       </q-card>
     </q-dialog>

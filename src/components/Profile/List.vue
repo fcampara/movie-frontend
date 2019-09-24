@@ -1,7 +1,8 @@
 <template>
   <div class="row justify-center">
     <q-card
-      v-for="profile in profiles.list" :key="profile.id"
+      data-cy="profile-card"
+      v-for="(profile, index) in profiles.list" :key="profile.id"
       @click="handleProfile(profile)"
     >
         <div class="row justify-center items-center col-12 q-mt-md">
@@ -10,7 +11,7 @@
       <span class="row justify-center items-center col-12 text-overline">
         {{ profile.name }}
       </span>
-      <q-btn class="delete-button" fab icon="close" color="negative" @click="handleRemove(profile)"/>
+      <q-btn class="delete-button" :data-cy="`delete-${index}`" fab icon="close" color="negative" @click.stop.prevent="handleRemove(profile)"/>
     </q-card>
   </div>
 </template>
