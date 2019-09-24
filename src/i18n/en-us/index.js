@@ -9,6 +9,7 @@ export default {
   loadingUserInformation: 'Loading user information',
   fieldIsRequired: 'Field is required',
   invalidEmail: 'Invalid Email',
+  invalidDate: 'Invalid Date',
   search: 'Search',
   createAccount: 'Create Account',
   confirmPassword: 'Confirm Password',
@@ -28,5 +29,6 @@ export default {
   watched: 'Watched',
   removeMyList: 'Remove from my list',
   language: 'Language',
-  noResult: 'No Results'
+  noResult: 'No Results',
+  create: 'Create'
 }
