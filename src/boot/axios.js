@@ -2,9 +2,7 @@ import Axios from 'axios'
 import { Notify } from 'quasar'
 import humps from 'humps'
 import store from '../store'
-const baseURL = process.env.n.BASE_URL
-const movieURL = process.env.n.MOVIE_API_URL
-const movieKey = process.env.n.MOVIE_API_KEY
+import { baseURL, movieURL, movieKey } from '../constants/envKeys'
 
 const instanceMovies = Axios.create({
   baseURL: `${movieURL}`,
