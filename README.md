@@ -1,26 +1,30 @@
-# Movie App (movie-frontend)
+# Movie Frontend
 
-App to save your movies
+Antes de executar o projeto deve ser instalada as depedências.
 
-## Install the dependencies
-```bash
-npm install
+```
+  $ npm i
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
+Caso queira executar em modo de desenvolvimento deve ser criado um arquivo .env.dev e para o ambiente de producação basta utilizar o arquivo .env
+as váriaveis de ambientes para serem definidas são as seguintes
+
+```
+  BASE_URL=h
+
+  MOVIE_API_KEY=
+  MOVIE_API_URL=
+  MOVIE_URL_IMG=
 ```
 
-### Lint the files
-```bash
-npm run lint
+Ser for necessário buildar o projeto pode executar o comando
+
+```
+  $ npm run build
 ```
 
-### Build the app for production
-```bash
-quasar build
-```
+Os testes foram desenvolvidos com o framework Cypress.js, para poder executar os teste a API deve estar sendo executada e o Frontend deve ser sendo executado na porta 8080, caso seja necessário alterar a porta basta modificar no arquivo de configuração (cypress.json).
 
-### Customize the configuration
-See [Configuring quasar.conf.js](https://quasar.dev/quasar-cli/quasar-conf-js).
+```
+  $ npm test
+```

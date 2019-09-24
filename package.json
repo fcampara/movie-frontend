@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "test": "./node_modules/.bin/cypress open",
+    "start": "./node_modules/.bin/quasar dev",
     "build": "quasar build -m pwa"
   },
   "dependencies": {
