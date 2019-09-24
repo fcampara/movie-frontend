@@ -1,0 +1,23 @@
+{
+  "hosting": {
+    "public": "./dist/pwa",
+    "predeploy": [
+      "quasar build -m pwa"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      },
+      {
+        "source": "/api/**",
+        "function": "api"
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
