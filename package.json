@@ -9,11 +9,15 @@
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "test": "./node_modules/.bin/cypress open",
-    "build": "quasar build -m pwa"
+    "build": "quasar build",
+    "start": "node server.js",
+    "heroku-postbuild": "npm i && npm build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "connect-history-api-fallback": "^1.6.0",
+    "express": "^4.17.1",
     "faker": "^4.1.0",
     "humps": "^2.0.1",
     "quasar": "^1.0.0",
