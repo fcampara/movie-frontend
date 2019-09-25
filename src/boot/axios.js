@@ -3,7 +3,7 @@ import { Notify } from 'quasar'
 import humps from 'humps'
 import store from '../store'
 import { baseURL, movieURL, movieKey } from '../constants/envKeys'
-
+console.log(baseURL)
 const instanceMovies = Axios.create({
   baseURL: movieURL,
   timeout: 30000,
