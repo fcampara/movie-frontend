@@ -1,4 +1,5 @@
 const
+  { resolve } = require('path'),
   express = require('express'),
   serveStatic = require('serve-static'),
   history = require('connect-history-api-fallback'),
@@ -7,5 +8,5 @@ const
 const app = express()
 
 app.use(history())
-app.use(serveStatic(__dirname + '/dist/spa'))
+app.use(serveStatic(resolve(__dirname, 'src', 'dist', 'spa')))
 app.listen(port)
